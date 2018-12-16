@@ -1,0 +1,38 @@
+---
+service: serverless-python
+
+frameworkVersion: "^1.32.0"
+
+plugins:
+  - serverless-domain-manager
+
+provider:
+  name: aws
+  runtime: python3.7
+  region: ${env:AWS_DEFAULT_REGION, 'us-east-1'}
+  stage: ${opt:stage, env:SERVERLESS_STAGE, 'dev'}
+
+custom:
+  domain: makenew.razorx.app
+  customDomain:
+    domainName: ${self:provider.stage}.${self:service}.${self:custom.domain}
+    endpointType: regional
+    createRoute53Record: true
+
+package:
+  individually: true
+  exclude:
+    - './**'
+  include:
+    - 'setup.py'
+    - 'handlers/*.py'
+    - 'makenew_serverless_python/*.py'
+    - '!./**/*_test.py'
+
+functions:
+  todo:
+    handler: handlers/todo.main
+    events:
+      - http:
+          method: get
+          path: /todo

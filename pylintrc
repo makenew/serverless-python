@@ -1,0 +1,3 @@
+[MASTER]
+
+init-hook='import sys; sys.path.insert(0, os.path.abspath("makenew_serverless_python"))'
