@@ -38,12 +38,12 @@ Features
 
 .. _AWS Lambda: https://aws.amazon.com/lambda/
 .. _Codecov: https://codecov.io/
-.. _EditorConfig: http://editorconfig.org/
-.. _Keep a CHANGELOG: http://keepachangelog.com/
+.. _EditorConfig: https://editorconfig.org/
+.. _Keep a CHANGELOG: https://keepachangelog.com/
 .. _PyPI: https://pypi.python.org/pypi
 .. _Pylint: https://www.pylint.org/
 .. _Serverless: https://serverless.com/
-.. _Shields.io: http://shields.io/
+.. _Shields.io: https://shields.io/
 .. _custom domain: https://github.com/amplify-education/serverless-domain-manager
 .. _pytest: https://docs.pytest.org/
 .. _setuptools: https://pythonhosted.org/setuptools/.
