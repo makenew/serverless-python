@@ -256,9 +256,9 @@ Deployment is triggered on CircleCI when a git tag matching
 ``stage.<environment>`` is created or updated.
 Use ``npm run release:<environment>`` to do this automatically, e.g.,
 
-  ::
+::
 
-    $ npm run release:test
+  $ npm run release:test
 
 CircleCI Setup
 --------------
