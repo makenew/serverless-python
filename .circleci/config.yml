@@ -18,12 +18,26 @@ executors:
     working_directory: ~/build
     docker:
       - image: python:<< parameters.tag >>
+  lambda:
+    parameters:
+      runtime:
+        type: string
+        default: python
+      tag:
+        type: string
+        default: '3.7'
+    working_directory: /var/task
+    docker:
+      - image: lambci/lambda:build-<<parameters.runtime>><< parameters.tag >>
 
 commands:
   setup:
     description: Setup environment
     parameters:
       is_alpine:
+        type: boolean
+        default: false
+      is_lambda:
         type: boolean
         default: false
     steps:
@@ -33,9 +47,12 @@ commands:
             - run:
                 name: Install Alpine Linux build dependencies
                 command: apk add --no-cache ca-certificates git make openssh-client
-      - run:
-          name: Install Pipenv
-          command: pip install pipenv
+      - unless:
+          condition: << parameters.is_lambda >>
+          steps:
+            - run:
+                name: Install Pipenv
+                command: pip install pipenv
       - checkout
       - when:
           condition: << parameters.is_alpine >>
@@ -72,21 +89,28 @@ jobs:
   test:
     description: Test Python package
     parameters:
+      executor:
+        type: string
+        default: python
       tag:
         type: string
         default: latest
       is_alpine:
         type: boolean
         default: false
+      is_lambda:
+        type: boolean
+        default: false
       upload_coverage:
         type: boolean
         default: false
     executor:
-      name: python
+      name: << parameters.executor >>
       tag: << parameters.tag >>
     steps:
       - setup:
           is_alpine: << parameters.is_alpine >>
+          is_lambda: << parameters.is_lambda >>
       - install
       - run:
           name: Test package
@@ -119,12 +143,25 @@ jobs:
           name: Publish package
           command: make publish
   deploy:
+    parameters:
+      tag:
+        type: string
     description: Deploy to AWS with Serverless
     executor:
-      name: node
-      tag: dubnium
+      name: lambda
+      tag: << parameters.tag >>
+    environment:
+      DOCKERIZE_PIP: 'false'
     steps:
-      - checkout
+      - setup:
+          is_lambda: true
+      - run:
+          name: Install Node.js
+          command: |
+            curl https://lambci.s3.amazonaws.com/fs/nodejs8.10.tgz | tar -zx -C /
+      - run:
+          name: Update npm
+          command: npm install -g npm@latest
       - run:
           name: Install dependencies
           command: npm ci
@@ -163,6 +200,8 @@ workflows:
           <<: *filters
       - test:
           name: test-lambda
+          is_lambda: true
+          executor: lambda
           tag: *deploy_tag
           <<: *filters
       - publish:
@@ -176,9 +215,11 @@ workflows:
   serverless:
     jobs:
       - test:
+          executor: lambda
           tag: *deploy_tag
           <<: *deploy_filters
       - deploy:
           <<: *deploy_filters
+          tag: *deploy_tag
           requires:
             - test

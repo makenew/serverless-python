@@ -5,6 +5,7 @@ frameworkVersion: "^1.32.0"
 
 plugins:
   - serverless-domain-manager
+  - serverless-python-requirements
 
 provider:
   name: aws
@@ -13,11 +14,17 @@ provider:
   stage: ${opt:stage, env:SERVERLESS_STAGE, 'dev'}
 
 custom:
+  true: true
+  false: false
   domain: makenew.razorx.app
   customDomain:
     domainName: ${self:provider.stage}.${self:service}.${self:custom.domain}
     endpointType: regional
     createRoute53Record: true
+  pythonRequirements:
+    slim: true
+    usePipenv: true
+    dockerizePip: ${self:custom.${env:DOCKERIZE_PIP, 'true'}}
 
 package:
   individually: true

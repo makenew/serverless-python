@@ -8,6 +8,12 @@
 # Environment versions file
 .versions
 
+# requirements file (only Pipfile supported)
+requirements*.txt*
+
+# Temporary development files
+tmp
+
 # pytest-incremental
 .pytest-incremental
 deps.json

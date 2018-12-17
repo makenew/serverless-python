@@ -204,6 +204,7 @@ Requirements
 ~~~~~~~~~~~~
 
 You will need `Python 3`_ with Pipenv_ and Node.js_ with npm_.
+To run some Serverless commands you will need Docker_.
 
 Install the development dependencies with
 
@@ -212,6 +213,7 @@ Install the development dependencies with
     $ pipenv install --dev
     $ npm install
 
+.. _Docker: https://www.docker.com/
 .. _Node.js: https://nodejs.org/
 .. _npm: https://www.npmjs.com/
 .. _Pipenv: https://pipenv.readthedocs.io/
