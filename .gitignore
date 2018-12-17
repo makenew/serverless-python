@@ -8,7 +8,6 @@
 # Environment versions file
 .versions
 
-
 # Requirements cache
 .serverless-python-requirements
 

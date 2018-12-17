@@ -70,8 +70,8 @@ makenew () {
   sed_insert README.rst '21i' 'TODO'
 
   find_replace "s/version=.*/version='0.0.0',/g"
-  find_replace "s/Python Package Skeleton/${mk_title}/g"
-  find_replace "s/Package skeleton for a python module\./${mk_description}/g"
+  find_replace "s/Serverless Python Project Skeleton/${mk_title}/g"
+  find_replace "s/Package skeleton for an Python Serverless project on AWS Lambda\./${mk_description}/g"
   find_replace "s/2018 Evan Sosenko/2018 ${mk_author}/g"
   find_replace "s/Evan Sosenko/${mk_author}/g"
   find_replace "s/razorx@evansosenko\.com/${mk_email}/g"

@@ -1,5 +1,5 @@
-Python Package Skeleton
-=======================
+Serverless Python Project Skeleton
+==================================
 
 |PyPI| |Codecov| |CircleCI|
 
@@ -13,12 +13,12 @@ Python Package Skeleton
    :target: https://circleci.com/gh/makenew/serverless-python
    :alt: CircleCI
 
-Package skeleton for an Python module.
+Package skeleton for an Python Serverless project on AWS Lambda.
 
 Description
 -----------
 
-Bootstrap a new Python_ package in less than a minute.
+Bootstrap a new Python_ Serverless project in five minutes or less.
 
 .. _Python: https://www.python.org/
 
@@ -88,7 +88,7 @@ Bootstrapping a New Project
 
      $ git diff --cached
      $ git commit -m "Replace makenew boilerplate"
-     $ git remote add origin git@github.com:<user>/<new-python-package>.git
+     $ git remote add origin git@github.com:<user>/<new-serverless-python>.git
      $ git push -u origin master
 
 6. Ensure the CircleCI build passes,

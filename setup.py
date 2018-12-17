@@ -16,7 +16,7 @@ setup(
     packages=find_packages(exclude=['docs']),
     url='https://github.com/makenew/serverless-python',
     license='MIT',
-    description='Package skeleton for a python module.',
+    description='Package skeleton for an Python Serverless project on AWS Lambda.',
     long_description=long_description,
     tests_require=[
         'pytest>=4.0.0,<5.0.0',
