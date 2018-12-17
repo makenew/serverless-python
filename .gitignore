@@ -8,6 +8,10 @@
 # Environment versions file
 .versions
 
+
+# Requirements cache
+.serverless-python-requirements
+
 # requirements file (only Pipfile supported)
 requirements*.txt*
 

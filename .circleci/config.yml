@@ -165,11 +165,16 @@ jobs:
       - run:
           name: Install dependencies
           command: npm ci
+      - restore_cache:
+          key: requirements-cache-{{ arch }}-{{ checksum ".versions" }}-
       - deploy:
           name: Deploy
           command: |
             export SERVERLESS_STAGE="${CIRCLE_TAG##*.}"
             npm run deploy
+      - save_cache:
+          key: requirements-cache-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
+          paths: .serverless-python-requirements
 
 references:
   version_tags: &version_tags

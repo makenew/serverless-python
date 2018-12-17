@@ -24,7 +24,11 @@ custom:
   pythonRequirements:
     slim: true
     usePipenv: true
+    useDownloadCache: true
+    useStaticCache: true
     dockerizePip: ${self:custom.${env:DOCKERIZE_PIP, 'true'}}
+    cacheLocation: .serverless-python-requirements
+    staticCacheMaxVersions: 1
 
 package:
   individually: true
