@@ -10,7 +10,7 @@ with open('README.rst', 'r') as f:
 
 setup(
     name='makenew-serverless-python',
-    version='0.1.0',
+    version='0.2.0',
     author='Evan Sosenko',
     author_email='razorx@evansosenko.com',
     packages=find_packages(exclude=['docs']),
