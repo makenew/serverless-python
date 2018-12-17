@@ -35,9 +35,9 @@ package:
   exclude:
     - './**'
   include:
-    - 'setup.py'
-    - 'handlers/*.py'
-    - 'makenew_serverless_python/*.py'
+    - './setup.py'
+    - './handlers/**/*.py'
+    - './makenew_serverless_python/**/*.py'
     - '!./**/*_test.py'
 
 functions:
