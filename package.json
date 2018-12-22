@@ -9,8 +9,8 @@
     "release:production": "git tag --force stage.prod && git push --force origin stage.prod"
   },
   "devDependencies": {
-    "serverless": "^1.32.0",
-    "serverless-domain-manager": "^2.6.6",
+    "serverless": "^1.35.1",
+    "serverless-domain-manager": "^2.6.10",
     "serverless-python-requirements": "^4.2.5"
   }
 }
