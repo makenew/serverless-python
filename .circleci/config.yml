@@ -75,7 +75,7 @@ commands:
         default: true
     steps:
       - restore_cache:
-          key: pipenv-cache-{{ arch }}-{{ checksum ".versions" }}-
+          key: pipenv-{{ arch }}-{{ checksum ".versions" }}-
       - run:
           name: Install dependencies
           command: pipenv install --deploy --dev
@@ -83,7 +83,7 @@ commands:
           condition: << parameters.save_cache >>
           steps:
             - save_cache:
-                key: pipenv-cache-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
+                key: pipenv-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
                 paths: ~/.cache/pipenv
 jobs:
   test:
@@ -166,14 +166,14 @@ jobs:
           name: Install dependencies
           command: npm ci
       - restore_cache:
-          key: requirements-cache-{{ arch }}-{{ checksum ".versions" }}-
+          key: requirements-{{ arch }}-{{ checksum ".versions" }}-
       - deploy:
           name: Deploy
           command: |
             export SERVERLESS_STAGE="${CIRCLE_TAG##*.}"
             npm run deploy
       - save_cache:
-          key: requirements-cache-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
+          key: requirements-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
           paths: .serverless-python-requirements
 
 references:
