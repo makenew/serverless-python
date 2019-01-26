@@ -175,7 +175,7 @@ Quickstart
 
 ::
 
-    $ git clone https://github.com/makenew/serverless-python.git
+    $ git clone https://github.com/makenew/serverless-python.git serverless-python
     $ cd serverless-python
     $ pipenv install --dev
     $ npm install

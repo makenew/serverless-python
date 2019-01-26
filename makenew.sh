@@ -79,7 +79,7 @@ makenew () {
   find_replace "s/makenew-serverless-python/${mk_slug}/g"
   find_replace "s/makenew_serverless_python/${mk_module}/g"
   find_replace "s|makenew\.razorx\.app|${mk_domain}|g"
-  find_replace "s|serverless-python|${mk_stack}|g"
+  find_replace "s|service: serverless-python|service: ${mk_stack}|g"
 
   git mv makenew_serverless_python ${mk_module}
 
