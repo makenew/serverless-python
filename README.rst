@@ -13,7 +13,7 @@ Serverless Python Project Skeleton
    :target: https://circleci.com/gh/makenew/serverless-python
    :alt: CircleCI
 
-Package skeleton for an Python Serverless project on AWS Lambda.
+Package skeleton for a Python Serverless project on AWS Lambda.
 
 Description
 -----------
