@@ -12,6 +12,7 @@ provider:
   runtime: python3.7
   region: ${env:AWS_DEFAULT_REGION, 'us-east-1'}
   stage: ${opt:stage, env:SERVERLESS_STAGE, 'dev'}
+  logRetentionInDays: 30
 
 custom:
   true: true
