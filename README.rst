@@ -95,11 +95,6 @@ Bootstrapping a New Project
 
    ::
 
-     $ cat pyproject.toml | grep 'python = ".*"' | cut -d '"' -f 2 > .python-version
-     $ pyenv install $(cat .python-version)
-     $ pyenv virtualenv $(cat .python-version) $(basename $(pwd))
-     $ echo $(basename $(pwd)) > .python-version
-     $ pyenv activate
      $ poetry install
      $ poetry run bumpversion patch
      $ git push
@@ -178,11 +173,6 @@ Quickstart
 
     $ git clone https://github.com/makenew/serverless-python.git
     $ cd serverless-python
-    $ cat pyproject.toml | grep 'python = ".*"' | cut -d '"' -f 2 > .python-version
-    $ pyenv install $(cat .python-version)
-    $ pyenv virtualenv $(cat .python-version) $(basename $(pwd))
-    $ echo $(basename $(pwd)) > .python-version
-    $ pyenv activate
     $ poetry install
 
 Run each command below in a separate terminal window:
@@ -208,18 +198,8 @@ Clone the project with
 Requirements
 ~~~~~~~~~~~~
 
-You will need `Python 3`_ with pyenv_ and Poetry_ and Node.js_ with npm_.
+You will need `Python 3`_ and Poetry_ and Node.js_ with npm_.
 To run some Serverless commands you will need Docker_.
-
-Install Python and create and use a new virtualenv (if one does not yet exist) with
-
-::
-
-    $ cat pyproject.toml | grep 'python = ".*"' | cut -d '"' -f 2 > .python-version
-    $ pyenv install $(cat .python-version)
-    $ pyenv virtualenv $(cat .python-version) $(basename $(pwd))
-    $ echo $(basename $(pwd)) > .python-version
-    $ pyenv activate
 
 Install the development dependencies with
 
@@ -231,7 +211,6 @@ Install the development dependencies with
 .. _Docker: https://www.docker.com/
 .. _Node.js: https://nodejs.org/
 .. _npm: https://www.npmjs.com/
-.. _Pipenv: https://pipenv.readthedocs.io/
 .. _Python 3: https://www.python.org/
 
 Tests

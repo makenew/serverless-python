@@ -67,7 +67,7 @@ makenew () {
   codecov="https://codecov.io/gh/${mk_user}${mk_repo}"
   read -p "> Ensure the Codecov project exists at ${codecov} then press enter." mk_null
 
-  sed_delete README.rst '21,154d'
+  sed_delete README.rst '21,149d'
   sed_insert README.rst '21i' 'TODO'
 
   find_replace "s/^version = \".*/version = \"0.0.0\"/g"
