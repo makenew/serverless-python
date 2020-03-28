@@ -39,6 +39,7 @@ stage_env () {
   git rm -f makenew.sh
   echo
   echo 'Staging changes.'
+  git checkout poetry.lock
   git add --all
   echo
   echo 'Done!'
@@ -69,7 +70,8 @@ makenew () {
   sed_delete README.rst '21,154d'
   sed_insert README.rst '21i' 'TODO'
 
-  find_replace "s/version =.*/version = \"0.0.0\",/g"
+  find_replace "s/^version = \".*/version = \"0.0.0\"/g"
+  find_replace "s/current_version = .*/current_version = 0.0.0/g"
   find_replace "s/Serverless Python Project Skeleton/${mk_title}/g"
   find_replace "s/Package skeleton for a Python Serverless project on AWS Lambda\./${mk_description}/g"
   find_replace "s/2020 Evan Sosenko/2020 ${mk_author}/g"
