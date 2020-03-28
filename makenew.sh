@@ -63,13 +63,13 @@ makenew () {
   circleci="https://circleci.com/gh/${mk_user}/${mk_repo}"
   read -p "> Follow the CircleCI project at ${circleci} then press enter." mk_null
 
-  codecov="https://codecov.io/gh/${mk_user}/${mk_repo}"
+  codecov="https://codecov.io/gh/${mk_user}${mk_repo}"
   read -p "> Ensure the Codecov project exists at ${codecov} then press enter." mk_null
 
-  sed_delete README.rst '21,150d'
+  sed_delete README.rst '21,154d'
   sed_insert README.rst '21i' 'TODO'
 
-  find_replace "s/version=.*/version='0.0.0',/g"
+  find_replace "s/version =.*/version = \"0.0.0\",/g"
   find_replace "s/Serverless Python Project Skeleton/${mk_title}/g"
   find_replace "s/Package skeleton for a Python Serverless project on AWS Lambda\./${mk_description}/g"
   find_replace "s/2020 Evan Sosenko/2020 ${mk_author}/g"

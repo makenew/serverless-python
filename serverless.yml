@@ -9,7 +9,7 @@ plugins:
 
 provider:
   name: aws
-  runtime: python3.7
+  runtime: python3.8
   region: ${env:AWS_DEFAULT_REGION, 'us-east-1'}
   stage: ${opt:stage, env:SERVERLESS_STAGE, 'dev'}
   logRetentionInDays: 30
@@ -24,7 +24,7 @@ custom:
     createRoute53Record: true
   pythonRequirements:
     slim: true
-    usePipenv: true
+    usePoetry: true
     useDownloadCache: true
     useStaticCache: true
     dockerizePip: ${self:custom.${env:DOCKERIZE_PIP, 'true'}}

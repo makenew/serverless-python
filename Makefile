@@ -1,19 +1,22 @@
 all: lint test
 
-lint:
-	@pipenv run python setup.py lint
-
 build:
-	@rm -rf build dist
-	@pipenv run python setup.py sdist bdist_wheel
+	@rm -rf dist
+	@poetry build
+
+clean:
+	@rm -rf .pytest-incremental
+
+lint:
+	@poetry run pylint ./makenew_serverless_python
 
 publish:
-	@pipenv run twine upload dist/*
+	@poetry run twine upload dist/*
 
 test:
-	@pipenv run python setup.py test
+	@poetry run pytest --inc --cov=./makenew_serverless_python
 
 watch:
-	@pipenv run ptw
+	@poetry run ptw
 
 .PHONY: build docs test

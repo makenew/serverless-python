@@ -26,8 +26,8 @@ Features
 ~~~~~~~~
 
 - Deploy to `AWS Lambda`_ under a `custom domain`_ with Serverless_.
-- Package management with setuptools_ and publishing to PyPI_.
-- Secure dependency management with Pipenv_.
+- Publishing to PyPI_.
+- Secure dependency management with Poetry_.
 - Linting with Pylint_.
 - pytest_ helps you write better programs.
 - Code coverage reporting with Codecov_.
@@ -46,7 +46,6 @@ Features
 .. _Shields.io: https://shields.io/
 .. _custom domain: https://github.com/amplify-education/serverless-domain-manager
 .. _pytest: https://docs.pytest.org/
-.. _setuptools: https://pythonhosted.org/setuptools/.
 
 Bootstrapping a New Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -96,8 +95,13 @@ Bootstrapping a New Project
 
    ::
 
-     $ pipenv install --dev
-     $ pipenv run bumpversion patch
+     $ cat pyproject.toml | grep 'python = ".*"' | cut -d '"' -f 2 > .python-version
+     $ pyenv install $(cat .python-version)
+     $ pyenv virtualenv $(cat .python-version) $(basename $(pwd))
+     $ echo $(basename $(pwd)) > .python-version
+     $ pyenv activate
+     $ poetry install
+     $ poetry run bumpversion patch
      $ git push
      $ git push --tags
 
@@ -159,10 +163,7 @@ Install it with
 
 ::
 
-    $ pipenv install makenew_serverless_python
-
-If you are writing a Python package which will depend on this,
-add this to your requirements in ``setup.py``.
+    $ poetry install makenew_serverless_python
 
 .. _makenew_serverless_python: https://pypi.python.org/pypi/makenew-serverless-python
 .. _Python Package Index (PyPI): https://pypi.python.org/
@@ -175,10 +176,14 @@ Quickstart
 
 ::
 
-    $ git clone https://github.com/makenew/serverless-python.git serverless-python
+    $ git clone https://github.com/makenew/serverless-python.git
     $ cd serverless-python
-    $ pipenv install --dev
-    $ npm install
+    $ cat pyproject.toml | grep 'python = ".*"' | cut -d '"' -f 2 > .python-version
+    $ pyenv install $(cat .python-version)
+    $ pyenv virtualenv $(cat .python-version) $(basename $(pwd))
+    $ echo $(basename $(pwd)) > .python-version
+    $ pyenv activate
+    $ poetry install
 
 Run each command below in a separate terminal window:
 
@@ -203,14 +208,24 @@ Clone the project with
 Requirements
 ~~~~~~~~~~~~
 
-You will need `Python 3`_ with Pipenv_ and Node.js_ with npm_.
+You will need `Python 3`_ with pyenv_ and Poetry_ and Node.js_ with npm_.
 To run some Serverless commands you will need Docker_.
+
+Install Python and create and use a new virtualenv (if one does not yet exist) with
+
+::
+
+    $ cat pyproject.toml | grep 'python = ".*"' | cut -d '"' -f 2 > .python-version
+    $ pyenv install $(cat .python-version)
+    $ pyenv virtualenv $(cat .python-version) $(basename $(pwd))
+    $ echo $(basename $(pwd)) > .python-version
+    $ pyenv activate
 
 Install the development dependencies with
 
 ::
 
-    $ pipenv install --dev
+    $ poetry install
     $ npm install
 
 .. _Docker: https://www.docker.com/
@@ -274,7 +289,7 @@ The following environment variables must be set on CircleCI_:
 - ``AWS_ACCESS_KEY_ID``: AWS access key ID.
 - ``AWS_SECRET_ACCESS_KEY``: AWS secret access key.
 
-These may be set manually or by running the script ``./circleci/envvars.sh``.
+These may be set manually or by running the script ``./.circleci/envvars.sh``.
 
 .. _CircleCI: https://circleci.com/
 

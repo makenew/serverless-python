@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "makenew-serverless-python"
+version = "1.0.4"
+description = "Package skeleton for a Python Serverless project on AWS Lambda."
+authors = ["Evan Sosenko <razorx@evansosenko.com>"]
+license = "MIT"
+readme = "README.rst"
+homepage = "https://github.com/makenew/serverless-python"
+repository = "https://github.com/makenew/serverless-python"
+include = ['poetry.lock']
+
+[tool.poetry.dependencies]
+python = "~3.8.1"
+
+[tool.poetry.dev-dependencies]
+bumpversion = "^0.5.3"
+docutils = "^0.16.0"
+pygments = "^2.4"
+pylint = "^2.4"
+pytest = "^5.2"
+pytest-cov = "^2.8"
+pytest-incremental = "^0.5.0"
+pytest-runner = "^5.2"
+pytest-watch = "^4.2"
+twine = "^3.0"
+wheel = "^0.34.0"
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"

@@ -14,7 +14,7 @@ executors:
     parameters:
       tag:
         type: string
-        default: '3'
+        default: '3.8'
     working_directory: ~/build
     docker:
       - image: python:<< parameters.tag >>
@@ -25,7 +25,7 @@ executors:
         default: python
       tag:
         type: string
-        default: '3.7'
+        default: '3.8'
     working_directory: /var/task
     docker:
       - image: lambci/lambda:build-<<parameters.runtime>><< parameters.tag >>
@@ -46,13 +46,19 @@ commands:
           steps:
             - run:
                 name: Install Alpine Linux build dependencies
-                command: apk add --no-cache ca-certificates git make openssh-client
+                command: apk add --no-cache ca-certificates curl gcc git make musl-dev openssh-client openssl-dev libffi-dev
       - unless:
           condition: << parameters.is_lambda >>
           steps:
             - run:
-                name: Install Pipenv
-                command: pip install pipenv
+                name: Install Poetry
+                command: |
+                  export POETRY_VERSION=1.0.5
+                  export POETRY_HOME=$HOME/.local/share/poetry
+                  export PATH=$HOME/.local/share/poetry/bin:$PATH
+                  mkdir -p $POETRY_HOME
+                  curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+                  poetry --version
       - checkout
       - when:
           condition: << parameters.is_alpine >>
@@ -62,10 +68,10 @@ commands:
                 command: |
                   echo "alpine: $(cat /etc/alpine-release)" >> .versions
       - run:
-          name: Save Python and Pipenv versions
+          name: Save Python and Poetry versions
           command: |
             echo "python: ${PYTHON_VERSION}" >> .versions
-            echo "pipenv: $(pipenv --version)" >> .versions
+            echo "poetry: $(poetry --version)" >> .versions
             cat .versions
   install:
     description: Install dependencies
@@ -75,16 +81,18 @@ commands:
         default: true
     steps:
       - restore_cache:
-          key: pipenv-{{ arch }}-{{ checksum ".versions" }}-
+          key: poetry-{{ arch }}-{{ checksum ".versions" }}-
       - run:
           name: Install dependencies
-          command: pipenv install --deploy --dev
+          command: |
+            export PATH=$HOME/.local/share/poetry/bin:$PATH
+            poetry install
       - when:
           condition: << parameters.save_cache >>
           steps:
             - save_cache:
-                key: pipenv-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
-                paths: ~/.cache/pipenv
+                key: poetry-{{ arch }}-{{ checksum ".versions" }}-{{ epoch }}
+                paths: ~/.cache/poetry
 jobs:
   test:
     description: Test Python package
@@ -114,34 +122,43 @@ jobs:
       - install
       - run:
           name: Test package
-          command: make test
+          command: |
+            export PATH=$HOME/.local/share/poetry/bin:$PATH
+            make test
       - run:
           name: Build package
-          command: make build
+          command: |
+            export PATH=$HOME/.local/share/poetry/bin:$PATH
+            make build
       - when:
           condition: << parameters.upload_coverage >>
           steps:
             - run:
                 name: Upload coverage to Codecov
                 command: |
+                  export PATH=$HOME/.local/share/poetry/bin:$PATH
                   if [[ -n "${CODECOV_TOKEN}" ]]; then
-                    pipenv install --dev codecov
-                    pipenv run codecov
+                    poetry add --dev codecov
+                    poetry run codecov
                   fi
   publish:
     description: Publish Python package
     executor:
       name: python
-      tag: '3'
+      tag: '3.8'
     steps:
       - setup
       - install
       - run:
           name: Build package
-          command: make build
+          command: |
+            export PATH=$HOME/.local/share/poetry/bin:$PATH
+            make build
       - deploy:
           name: Publish package
-          command: make publish
+          command: |
+            export PATH=$HOME/.local/share/poetry/bin:$PATH
+            make publish
   deploy:
     parameters:
       tag:
@@ -158,10 +175,7 @@ jobs:
       - run:
           name: Install Node.js
           command: |
-            curl https://lambci.s3.amazonaws.com/fs/nodejs8.10.tgz | tar -zx -C /
-      - run:
-          name: Update npm
-          command: npm install -g npm@latest
+            curl https://lambci.s3.amazonaws.com/fs/nodejs12.x.tgz | tar -zx -C /
       - run:
           name: Install dependencies
           command: npm ci
@@ -189,7 +203,7 @@ references:
         ignore: /.*/
       tags:
         only: /stage.*/
-  deploy_tag: &deploy_tag '3.7'
+  deploy_tag: &deploy_tag '3.8'
 
 workflows:
   default:
