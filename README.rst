@@ -191,14 +191,14 @@ Primary development tasks are defined in the `Makefile`.
 Source Code
 ~~~~~~~~~~~
 
-The `source code_` is hosted on GitHub.
+The `source code`_ is hosted on GitHub.
 Clone the project with
 
 ::
 
     $ git clone https://github.com/makenew/serverless-python.git
 
-.. _source_code: https://github.com/makenew/serverless-python
+.. _source code: https://github.com/makenew/serverless-python
 
 Requirements
 ~~~~~~~~~~~~
