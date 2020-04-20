@@ -213,6 +213,7 @@ Install the development dependencies with
 .. _Docker: https://www.docker.com/
 .. _Node.js: https://nodejs.org/
 .. _npm: https://www.npmjs.com/
+.. _Poetry: https://poetry.eustace.io/
 .. _Python 3: https://www.python.org/
 
 Tests
