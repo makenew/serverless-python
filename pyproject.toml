@@ -13,6 +13,7 @@ include = ['poetry.lock']
 python = "~3.8.1"
 
 [tool.poetry.dev-dependencies]
+black = "^19.10b0"
 bumpversion = "^0.5.3"
 docutils = "^0.16.0"
 pygments = "^2.4"

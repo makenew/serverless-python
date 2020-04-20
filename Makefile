@@ -7,8 +7,12 @@ build:
 clean:
 	@rm -rf .pytest-incremental
 
+format:
+	@poetry run black .
+
 lint:
 	@poetry run pylint ./makenew_serverless_python
+	@poetry run black --check .
 
 publish:
 	@poetry run twine upload dist/*
