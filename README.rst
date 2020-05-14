@@ -160,7 +160,7 @@ Install it with
 
 ::
 
-    $ poetry install makenew_serverless_python
+    $ pip install makenew_serverless_python
 
 .. _makenew_serverless_python: https://pypi.python.org/pypi/makenew-serverless-python
 .. _Python Package Index (PyPI): https://pypi.python.org/
