@@ -1,0 +1,35 @@
+---
+name: publish
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  pypi:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9.1
+      - name: Setup Poetry
+        uses: gr1n/setup-poetry@v4
+      - name: Setup cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+          restore-keys: ${{ runner.os }}-poetry-
+      - name: Install dependencies
+        run: poetry install
+      - name: Build
+        run: make build
+      - name: Publish
+        run: make publish
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
