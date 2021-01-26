@@ -15,7 +15,7 @@ lint:
 	@poetry run black --check .
 
 publish:
-	@poetry run twine upload dist/*
+	@poetry run twine upload --skip-existing dist/*
 
 test:
 	@poetry run pytest --inc --cov=./makenew_serverless_python
