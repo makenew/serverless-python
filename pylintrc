@@ -1,3 +1,15 @@
 [MASTER]
 
 init-hook='import sys; sys.path.insert(0, os.path.abspath("makenew_serverless_python"))'
+
+extension-pkg-whitelist=
+  rapidjson,
+
+[MESSAGES CONTROL]
+
+disable=
+    bad-continuation,
+    missing-class-docstring,
+    missing-function-docstring,
+    missing-module-docstring,
+    too-few-public-methods,
