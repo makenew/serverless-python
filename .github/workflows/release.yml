@@ -31,7 +31,9 @@ jobs:
           ref: ${{ github.event.client_payload.ref }}${{ github.event.inputs.ref }}
           token: ${{ secrets.GITHUB_TOKEN }}
   postdeploy:
-    needs: deploy
+    needs:
+      - predeploy
+      - deploy
     runs-on: ubuntu-20.04
     steps:
       - name: Finish deployment
