@@ -61,14 +61,8 @@ makenew () {
   read -p '> Serverless stack name (my-stack): ' mk_stack
   read -p '> Domain name (example.com): ' mk_domain
 
-  circleci="https://circleci.com/gh/${mk_user}/${mk_repo}"
-  read -p "> Follow the CircleCI project at ${circleci} then press enter." mk_null
-
-  codecov="https://codecov.io/gh/${mk_user}${mk_repo}"
-  read -p "> Ensure the Codecov project exists at ${codecov} then press enter." mk_null
-
-  sed_delete README.rst '21,151d'
-  sed_insert README.rst '21i' 'TODO'
+  sed_delete README.rst '18,144d'
+  sed_insert README.rst '18i' 'TODO'
 
   find_replace "s/^version = \".*/version = \"0.0.0\"/g"
   find_replace "s/current_version = .*/current_version = 0.0.0/g"
