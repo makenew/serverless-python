@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "makenew-serverless-python"
-version = "3.0.1"
+version = "3.0.2"
 description = "Package skeleton for a Python Serverless project on AWS Lambda."
 authors = ["Evan Sosenko <razorx@evansosenko.com>"]
 license = "MIT"
