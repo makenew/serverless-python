@@ -4,6 +4,7 @@
   "scripts": {
     "predeploy": "serverless create_domain",
     "deploy": "serverless deploy --aws-s3-accelerate",
+    "build": "serverless package",
     "release:test": "git tag --force stage.test && git push --force origin stage.test",
     "release:staging": "git tag --force stage.stg && git push --force origin stage.stg",
     "release:production": "git tag --force stage.prod && git push --force origin stage.prod"

@@ -70,3 +70,22 @@ jobs:
         run: poetry install
       - name: Build
         run: make build
+  serverless:
+    runs-on: ubuntu-20.04
+    container:
+      image: lambci/lambda:build-python3.8
+      env:
+        DOCKERIZE_PIP: 'false'
+        POETRY_VERSION: 1.1.4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        run: |
+          export POETRY_HOME=$HOME/.local/share/poetry
+          export PATH=$HOME/.local/share/poetry/bin:$PATH
+          mkdir -p $POETRY_HOME
+          curl -fsSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+          curl -fsSL https://lambci.s3.amazonaws.com/fs/nodejs12.x.tgz | tar -zx -C /
+          npm ci
+          npm run build
