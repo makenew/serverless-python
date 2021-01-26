@@ -1,7 +1,7 @@
 ---
 service: serverless-python
 
-frameworkVersion: "^1.32.0"
+frameworkVersion: '^2.0.0'
 
 plugins:
   - serverless-domain-manager
@@ -13,6 +13,9 @@ provider:
   region: ${env:AWS_DEFAULT_REGION, 'us-east-1'}
   stage: ${opt:stage, env:SERVERLESS_STAGE, 'stg'}
   logRetentionInDays: 30
+  apiGateway:
+    shouldStartNameWithService: true
+  lambdaHashingVersion: 20201221
 
 custom:
   true: true
