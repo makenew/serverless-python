@@ -1,17 +1,14 @@
 Serverless Python Project Skeleton
 ==================================
 
-|PyPI| |Codecov| |CircleCI|
+|PyPI| |GitHub Actions|
 
 .. |PyPI| image:: https://img.shields.io/pypi/v/makenew-serverless-python.svg
    :target: https://pypi.python.org/pypi/makenew-serverless-python
    :alt: PyPI
-.. |Codecov| image:: https://img.shields.io/codecov/c/github/makenew/serverless-python.svg
-   :target: https://codecov.io/gh/makenew/serverless-python
-   :alt: Codecov
-.. |CircleCI| image:: https://img.shields.io/circleci/project/github/makenew/serverless-python.svg
-   :target: https://circleci.com/gh/makenew/serverless-python
-   :alt: CircleCI
+.. |GitHub Actions| image:: https://github.com/makenew/serverless-python/workflows/main/badge.svg
+   :target: https://github.com/makenew/serverless-python/actions
+   :alt: GitHub Actions
 
 Package skeleton for a Python Serverless project on AWS Lambda.
 
@@ -32,7 +29,7 @@ Features
 - Uncompromising code formatting with Black_.
 - pytest_ helps you write better programs.
 - Code coverage reporting with Codecov_.
-- CircleCI_ ready.
+- Continuous testing and deployment with `GitHub Actions`_.
 - `Keep a CHANGELOG`_.
 - Consistent coding with EditorConfig_.
 - Badges from Shields.io_.
@@ -41,6 +38,7 @@ Features
 .. _Black: https://black.readthedocs.io/en/stable/
 .. _Codecov: https://codecov.io/
 .. _EditorConfig: https://editorconfig.org/
+.. _GitHub Actions: https://github.com/features/actions
 .. _Keep a CHANGELOG: https://keepachangelog.com/
 .. _PyPI: https://pypi.python.org/pypi
 .. _Pylint: https://www.pylint.org/
@@ -77,12 +75,7 @@ Bootstrapping a New Project
    remove the git remote, remove upstream tags,
    and stage changes for commit.
 
-4. Create the required CircleCI environment variables with
-
-   ::
-
-       $ .circleci/envvars.sh
-
+4. Create the required GitHub repository secrets
 5. Review, commit, and push the changes to GitHub with
 
    ::
@@ -92,7 +85,7 @@ Bootstrapping a New Project
      $ git remote add origin git@github.com:<user>/<new-serverless-python>.git
      $ git push -u origin master
 
-6. Ensure the CircleCI build passes,
+6. Ensure the GitHub action passes,
    then publish the initial version of the package with
 
    ::
@@ -160,7 +153,7 @@ Install it with
 
 ::
 
-    $ poetry install makenew_serverless_python
+    $ poetry add makenew_serverless_python
 
 .. _makenew_serverless_python: https://pypi.python.org/pypi/makenew-serverless-python
 .. _Python Package Index (PyPI): https://pypi.python.org/
@@ -242,38 +235,46 @@ Publishing
 ~~~~~~~~~~
 
 Use the bump2version_ command to release a new version.
-Push the created git tag which will trigger a CircleCI publish job.
+Push the created git tag which will trigger a GitHub action.
 
 .. _bump2version: https://github.com/c4urself/bump2version
 
-Deployment
-~~~~~~~~~~
+Publishing may be triggered using on the web
+using a `workflow_dispatch on GitHub Actions`_.
 
-Deployment is triggered on CircleCI when a git tag matching
-``stage.<environment>`` is created or updated.
-Use ``npm run release:<environment>`` to do this automatically, e.g.,
+.. _workflow_dispatch on GitHub Actions: https://github.com/makenew/serverless-python/actions?query=workflow%3Aversion
 
-::
-
-  $ npm run release:test
-
-CircleCI Setup
+GitHub Actions
 --------------
 
-*CircleCI should already be configured: this section is for reference only.*
+*GitHub Actions should already be configured: this section is for reference only.*
 
-The following environment variables must be set on CircleCI_:
+The following repository secrets must be set on GitHub Actions.
 
-- ``TWINE_USERNAME``: Username for publishing on PyPI.
-- ``TWINE_PASSWORD``: Password for publishing on PyPI.
-- ``CODECOV_TOKEN``: Codecov token for uploading coverage reports (optional).
+- ``PYPI_API_TOKEN``: API token for publishing on PyPI.
 - ``AWS_DEFAULT_REGION``: The AWS region Serverless will deploy to.
 - ``AWS_ACCESS_KEY_ID``: AWS access key ID.
 - ``AWS_SECRET_ACCESS_KEY``: AWS secret access key.
+- ``GH_TOKEN``: A personal access token that can trigger workflows.
 
-These may be set manually or by running the script ``./.circleci/envvars.sh``.
+These must be set manually.
 
-.. _CircleCI: https://circleci.com/
+Secrets for Optional GitHub Actions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The version and format GitHub actions
+require a user with write access to the repository.
+including access to trigger workflows.
+Set these additional secrets to enable the action:
+
+- ``GH_USER``: The GitHub user's username.
+- ``GH_TOKEN``: A personal access token for the user.
+- ``GIT_USER_NAME``: The name to set for Git commits.
+- ``GIT_USER_EMAIL``: The email to set for Git commits.
+- ``GPG_PRIVATE_KEY``: The `GPG private key`_.
+- ``GPG_PASSPHRASE``: The GPG key passphrase.
+
+.. _GPG private key: https://github.com/marketplace/actions/import-gpg#prerequisites
 
 Contributing
 ------------
