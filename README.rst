@@ -99,12 +99,12 @@ Bootstrapping a New Project
    that matches the custom deployment domains,
    e.g., this project uses a wildcard certificate for
    ``*.serverless-python.makenew.razorx.app``.
-   Then trigger a deploy to the test stage with
+   Then trigger a deploy to the stg stage with
 
    ::
 
      $ npm install
-     $ npm run release:test
+     $ npm run release:staging
 
 .. _AWS Certificate Manager: https://aws.amazon.com/certificate-manager/
 
