@@ -39,6 +39,8 @@ package:
   exclude:
     - './**'
   include:
+    - './LICENSE.txt'
+    - './pyproject.toml'
     - './setup.py'
     - './handlers/**/*.py'
     - './makenew_serverless_python/**/*.py'
