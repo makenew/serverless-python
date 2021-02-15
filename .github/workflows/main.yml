@@ -88,6 +88,14 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
       - name: Install Node.js
         run: curl -fsSL https://lambci.s3.amazonaws.com/fs/nodejs12.x.tgz | tar -zx -C /
+      - name: Cache npm packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
       - name: Install Dependencies
         run: npm ci
       - name: Serverless package
