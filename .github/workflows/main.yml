@@ -70,7 +70,7 @@ jobs:
         run: poetry install
       - name: Build
         run: make build
-  serverless:
+  package:
     runs-on: ubuntu-20.04
     container:
       image: lambci/lambda:build-python3.8
@@ -99,4 +99,4 @@ jobs:
       - name: Install Dependencies
         run: npm ci
       - name: Serverless package
-        run: npm run build
+        run: npm run sls:package
