@@ -9,7 +9,7 @@
     "release:production": "curl --fail -H \"Authorization: token $GITHUB_TOKEN\" -H 'Accept: application/vnd.github.v3+json' -d '{\"event_type\":\"release\",\"client_payload\":{\"environment\":\"production\"}}' -X POST \"https://api.github.com/repos/makenew/serverless-python/dispatches\""
   },
   "devDependencies": {
-    "serverless": "^2.23.0",
+    "serverless": "^2.31.0",
     "serverless-domain-manager": "^5.0.0",
     "serverless-python-requirements": "^5.1.0"
   }
