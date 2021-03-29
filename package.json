@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "predeploy": "serverless create_domain",
-    "deploy": "serverless deploy --aws-s3-accelerate",
+    "deploy": "serverless deploy --aws-s3-accelerate --stage=$SERVERLESS_STAGE",
     "sls:package": "serverless package",
     "sls:offline": "serverless offline",
     "release:staging": "curl --fail -H \"Authorization: token $GITHUB_TOKEN\" -H 'Accept: application/vnd.github.v3+json' -d '{\"event_type\":\"release\",\"client_payload\":{\"environment\":\"staging\"}}' -X POST \"https://api.github.com/repos/makenew/serverless-python/dispatches\"",
