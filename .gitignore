@@ -17,6 +17,9 @@ requirements*.txt*
 # Temporary development files
 tmp
 
+# Serverless Offline
+.serverless-offline
+
 # pytest-incremental
 .pytest-incremental
 .pytest-incremental.*
