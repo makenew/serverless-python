@@ -3,13 +3,16 @@
   "private": true,
   "scripts": {
     "predeploy": "serverless create_domain",
-    "deploy": "serverless deploy --aws-s3-accelerate --stage=$SERVERLESS_STAGE",
+    "deploy": "npm-run-all --serial deploy:domain deploy:stack",
+    "deploy:domain": "serverless create_domain",
+    "deploy:stack": "serverless deploy --aws-s3-accelerate --stage=$SERVERLESS_STAGE",
     "sls:package": "serverless package",
     "sls:offline": "serverless offline",
     "release:staging": "curl --fail -H \"Authorization: token $GITHUB_TOKEN\" -H 'Accept: application/vnd.github.v3+json' -d '{\"event_type\":\"release\",\"client_payload\":{\"environment\":\"staging\"}}' -X POST \"https://api.github.com/repos/makenew/serverless-python/dispatches\"",
     "release:production": "curl --fail -H \"Authorization: token $GITHUB_TOKEN\" -H 'Accept: application/vnd.github.v3+json' -d '{\"event_type\":\"release\",\"client_payload\":{\"environment\":\"production\"}}' -X POST \"https://api.github.com/repos/makenew/serverless-python/dispatches\""
   },
   "devDependencies": {
+    "npm-run-all": "^4.1.2",
     "serverless": "^2.31.0",
     "serverless-domain-manager": "^5.0.0",
     "serverless-offline": "^6.9.0",
