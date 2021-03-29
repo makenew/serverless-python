@@ -50,7 +50,7 @@ jobs:
           mkdir -p $POETRY_HOME
           curl -fsSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
       - name: Install Node.js
-        run: curl -fsSL https://lambci.s3.amazonaws.com/fs/nodejs12.x.tgz | tar -zx -C /
+        run: curl -fsSL https://lambci.s3.amazonaws.com/fs/nodejs14.x.tgz | tar -zx -C /
       - name: Cache npm packages
         uses: actions/cache@v2
         with:
