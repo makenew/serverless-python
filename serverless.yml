@@ -27,10 +27,9 @@ provider:
 custom:
   true: true
   false: false
-  stage: ${opt:stage, env:SERVERLESS_STAGE, self:provider.stage}
   domain: makenew.razorx.app
   customDomain:
-    domainName: ${self:custom.stage}.${self:service}.${self:custom.domain}
+    domainName: ${sls:stage}.${self:service}.${self:custom.domain}
     endpointType: regional
     createRoute53Record: true
   pythonRequirements:
