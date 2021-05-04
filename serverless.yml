@@ -22,6 +22,8 @@ provider:
   logRetentionInDays: 30
   apiGateway:
     shouldStartNameWithService: true
+  eventBridge:
+    useCloudFormation: true
   lambdaHashingVersion: 20201221
 
 custom:
