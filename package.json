@@ -4,7 +4,7 @@
   "scripts": {
     "predeploy": "serverless create_domain",
     "deploy": "npm-run-all --serial deploy:domain deploy:stack",
-    "deploy:domain": "serverless create_domain",
+    "deploy:domain": "serverless create_domain --stage=$SERVERLESS_STAGE",
     "deploy:stack": "serverless deploy --aws-s3-accelerate --stage=$SERVERLESS_STAGE",
     "sls:package": "serverless package",
     "sls:offline": "serverless offline",
