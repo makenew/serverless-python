@@ -24,6 +24,8 @@ provider:
     shouldStartNameWithService: true
   eventBridge:
     useCloudFormation: true
+  deploymentBucket:
+    blockPublicAccess: true
   lambdaHashingVersion: 20201221
 
 custom:
