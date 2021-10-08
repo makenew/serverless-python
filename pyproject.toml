@@ -10,7 +10,7 @@ repository = "https://github.com/makenew/serverless-python"
 include = ['poetry.lock']
 
 [tool.poetry.dependencies]
-python = "~3.8.11"
+python = "~3.8.6"
 toml = "^0.10.2"
 
 [tool.poetry.dev-dependencies]
