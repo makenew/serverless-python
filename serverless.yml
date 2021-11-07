@@ -29,8 +29,6 @@ provider:
   lambdaHashingVersion: 20201221
 
 custom:
-  true: true
-  false: false
   domain: makenew.razorx.app
   customDomain:
     domainName: ${sls:stage}.${self:service}.${self:custom.domain}
