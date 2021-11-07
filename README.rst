@@ -85,26 +85,21 @@ Bootstrapping a New Project
      $ git remote add origin git@github.com:<user>/<new-serverless-python>.git
      $ git push -u origin master
 
-6. Ensure the GitHub action passes,
-   then publish the initial version of the package with
-
-   ::
-
-     $ poetry install
-     $ poetry run bump2version patch
-     $ git push
-     $ git push --tags
-
-7. Ensure a valid certificate exists in `AWS Certificate Manager`_
+6. Ensure a valid certificate exists in `AWS Certificate Manager`_
    that matches the custom deployment domains,
    e.g., this project uses a wildcard certificate for
    ``*.serverless-python.makenew.razorx.app``.
-   Then trigger a deploy to the stg stage with
+
+7. Ensure the GitHub action passes,
+   then release the initial version with
 
    ::
 
      $ npm install
-     $ npm run release:staging
+     $ poetry install
+     $ poetry run bump2version patch
+     $ git push
+     $ git push --tags
 
 .. _AWS Certificate Manager: https://aws.amazon.com/certificate-manager/
 
@@ -243,6 +238,16 @@ Publishing may be triggered using on the web
 using a `workflow_dispatch on GitHub Actions`_.
 
 .. _workflow_dispatch on GitHub Actions: https://github.com/makenew/serverless-python/actions?query=workflow%3Aversion
+
+Deployment
+~~~~~~~~~~
+
+Serverless deployment is triggered by a release repository_dispatch on GitHub Actions.
+
+Deployment may be triggered using on the web
+using a `release workflow_dispatch on GitHub Actions`_.
+
+.. _release workflow_dispatch on GitHub Actions: https://github.com/makenew/serverless-nodejs/actions?query=workflow%3Arelease
 
 GitHub Actions
 --------------
