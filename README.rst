@@ -247,7 +247,7 @@ Serverless deployment is triggered by a release repository_dispatch on GitHub Ac
 Deployment may be triggered using on the web
 using a `release workflow_dispatch on GitHub Actions`_.
 
-.. _release workflow_dispatch on GitHub Actions: https://github.com/makenew/serverless-nodejs/actions?query=workflow%3Arelease
+.. _release workflow_dispatch on GitHub Actions: https://github.com/makenew/serverless-python/actions?query=workflow%3Arelease
 
 GitHub Actions
 --------------
