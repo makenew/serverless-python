@@ -43,6 +43,7 @@ custom:
     usePoetry: true
     useDownloadCache: true
     useStaticCache: true
+    dockerImage: public.ecr.aws/lambda/python:3.9
     dockerizePip: ${self:custom.${env:DOCKERIZE_PIP, 'true'}}
     cacheLocation: .serverless-python-requirements
     staticCacheMaxVersions: 1
