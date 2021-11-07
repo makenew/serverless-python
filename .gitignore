@@ -20,11 +20,6 @@ tmp
 # Serverless Offline
 .serverless-offline
 
-# pytest-incremental
-.pytest-incremental
-.pytest-incremental.*
-deps.json
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

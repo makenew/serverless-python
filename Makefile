@@ -4,9 +4,6 @@ build:
 	@rm -rf dist
 	@poetry build
 
-clean:
-	@rm -rf .pytest-incremental
-
 format:
 	@poetry run black .
 
@@ -18,7 +15,7 @@ publish:
 	@poetry run twine upload --skip-existing dist/*
 
 test:
-	@poetry run pytest --inc --cov=./makenew_serverless_python
+	@poetry run pytest --cov=./makenew_serverless_python
 
 watch:
 	@poetry run ptw
