@@ -8,7 +8,7 @@ format:
 	@poetry run black .
 
 lint:
-	@poetry run pylint ./makenew_serverless_python
+	@poetry run pylint ./makenew_serverless_python ./handlers
 	@poetry run black --check .
 
 publish:
