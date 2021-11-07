@@ -1,6 +1,7 @@
 {
   "name": "serverless-python",
   "private": true,
+  "type": "module",
   "scripts": {
     "predeploy": "serverless create_domain",
     "deploy": "npm-run-all --serial deploy:domain deploy:stack",
