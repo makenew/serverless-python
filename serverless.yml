@@ -43,7 +43,7 @@ custom:
     usePoetry: true
     useDownloadCache: true
     useStaticCache: true
-    dockerImage: mlupin/docker-lambda:python3.9-build
+    dockerImage: mlupin/docker-lambda:${self:provider.runtime}-build
     dockerizePip: ${self:custom.${env:DOCKERIZE_PIP, 'true'}}
     cacheLocation: .serverless-python-requirements
     staticCacheMaxVersions: 1
