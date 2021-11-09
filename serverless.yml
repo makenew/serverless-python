@@ -13,7 +13,7 @@ plugins:
 
 provider:
   name: aws
-  architecture: x86_64
+  architecture: arm64
   runtime: python3.9
   region: ${env:AWS_DEFAULT_REGION, 'us-east-1'}
   stage: stg
@@ -43,8 +43,9 @@ custom:
     usePoetry: true
     useDownloadCache: true
     useStaticCache: true
-    dockerImage: mlupin/docker-lambda:${self:provider.runtime}-build
     dockerizePip: ${self:custom.${env:DOCKERIZE_PIP, 'true'}}
+    dockerImage: ghcr.io/mlupine/docker-lambda:${self:provider.runtime}-build-${self:provider.architecture}
+    dockerRunCmdExtraArgs: ['--platform', 'linux/${self:provider.architecture}']
     cacheLocation: .serverless-python-requirements
     staticCacheMaxVersions: 1
 
