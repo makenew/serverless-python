@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "npm-run-all": "^4.1.2",
-    "serverless": "^2.63.0",
+    "serverless": "^2.66.2",
     "serverless-domain-manager": "^5.1.4",
     "serverless-offline": "^8.0.0",
     "serverless-python-requirements": "^5.1.1"
