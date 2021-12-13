@@ -12,7 +12,11 @@
     "POETRY_VIRTUALENVS_IN_PROJECT": "true",
     "PATH": "${containerEnv:PATH}:/home/vscode/.local/bin"
   },
-  "extensions": ["ms-python.python", "EditorConfig.EditorConfig"],
+  "extensions": [
+    "ms-vsliveshare.vsliveshare",
+    "ms-python.python",
+    "EditorConfig.EditorConfig"
+  ],
   "postCreateCommand": "poetry install && npm install",
   "forwardPorts": [3000, 3002],
   "remoteUser": "vscode"
