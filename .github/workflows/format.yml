@@ -32,7 +32,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9.7
+          python-version: 3.9.8
       - name: Setup Poetry
         uses: gr1n/setup-poetry@v7
       - name: Setup cache
