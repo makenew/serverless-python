@@ -7,14 +7,12 @@
     "deploy": "npm-run-all --serial deploy:domain deploy:stack",
     "deploy:domain": "serverless create_domain --stage=$SERVERLESS_STAGE",
     "deploy:stack": "serverless deploy --aws-s3-accelerate --stage=$SERVERLESS_STAGE",
-    "sls:package": "serverless package",
-    "sls:offline": "serverless offline"
+    "sls:package": "serverless package"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.2",
     "serverless": "^2.66.2",
     "serverless-domain-manager": "^5.1.4",
-    "serverless-offline": "^8.0.0",
     "serverless-python-requirements": "^5.1.1"
   }
 }
