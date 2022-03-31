@@ -220,7 +220,7 @@ Run tests with
 
     $ make test
 
-Run tests on chages with
+Run tests on changes with
 
 ::
 
