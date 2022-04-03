@@ -18,6 +18,5 @@
     "EditorConfig.EditorConfig"
   ],
   "postCreateCommand": "poetry install && npm install",
-  "forwardPorts": [3000, 3002],
   "remoteUser": "vscode"
 }
