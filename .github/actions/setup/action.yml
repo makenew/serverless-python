@@ -1,0 +1,34 @@
+---
+name: Setup
+description: Setup Python and install dependencies.
+
+inputs:
+  python_version:
+    description: The Python version
+    required: false
+    default: '3.9.10'
+  poetry_version:
+    description: The Poetry version
+    required: false
+    default: '1.1.13'
+
+runs:
+  using: composite
+  steps:
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ inputs.python_version }}
+      - name: Setup Poetry
+        uses: gr1n/setup-poetry@v7
+        with:
+          poetry-version: ${{ inputs.poetry_version }}
+      - name: Setup cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+          restore-keys: ${{ runner.os }}-poetry-
+      - name: Install dependencies
+        shell: bash
+        run: poetry install
