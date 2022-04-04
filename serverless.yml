@@ -3,7 +3,6 @@ service: serverless-python
 
 frameworkVersion: '^2.66.2'
 
-variablesResolutionMode: 20210326
 configValidationMode: error
 
 plugins:
@@ -22,11 +21,8 @@ provider:
     disableDefaultEndpoint: true
   apiGateway:
     shouldStartNameWithService: true
-  eventBridge:
-    useCloudFormation: true
   deploymentBucket:
     blockPublicAccess: true
-  lambdaHashingVersion: 20201221
 
 custom:
   true: true
