@@ -22,7 +22,7 @@ Bootstrap a new Python_ Serverless project in five minutes or less.
 Features
 ~~~~~~~~
 
-- Deploy to `AWS Lambda`_ under a `custom domain`_ with Serverless_.
+- Deploy to `AWS Lambda`_ with Serverless_.
 - Publishing to PyPI_.
 - Secure dependency management with Poetry_.
 - Linting with Pylint_.
@@ -44,7 +44,6 @@ Features
 .. _Pylint: https://www.pylint.org/
 .. _Serverless: https://serverless.com/
 .. _Shields.io: https://shields.io/
-.. _custom domain: https://github.com/amplify-education/serverless-domain-manager
 .. _pytest: https://docs.pytest.org/
 
 Bootstrapping a New Project
@@ -85,12 +84,7 @@ Bootstrapping a New Project
      $ git remote add origin git@github.com:<user>/<new-serverless-python>.git
      $ git push -u origin master
 
-6. Ensure a valid certificate exists in `AWS Certificate Manager`_
-   that matches the custom deployment domains,
-   e.g., this project uses a wildcard certificate for
-   ``*.serverless-python.makenew.razorx.app``.
-
-7. Ensure the GitHub action passes,
+6. Ensure the GitHub action passes,
    then release the initial version with
 
    ::
@@ -100,8 +94,6 @@ Bootstrapping a New Project
      $ poetry run bump2version patch
      $ git push
      $ git push --tags
-
-.. _AWS Certificate Manager: https://aws.amazon.com/certificate-manager/
 
 Updating
 ~~~~~~~~

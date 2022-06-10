@@ -6,7 +6,6 @@ frameworkVersion: '^3.17.0'
 configValidationMode: error
 
 plugins:
-  - serverless-domain-manager
   - serverless-python-requirements
 
 provider:
@@ -26,14 +25,6 @@ provider:
     blockPublicAccess: true
 
 custom:
-  true: true
-  false: false
-  domain: makenew.razorx.app
-  customDomain:
-    domainName: ${sls:stage}.${self:service}.${self:custom.domain}
-    apiType: http
-    endpointType: regional
-    createRoute53Record: true
   pythonRequirements:
     slim: true
     usePoetry: true
@@ -58,8 +49,5 @@ package:
 
 functions:
   todo:
+    url: true
     handler: handlers/todo.main
-    events:
-      - httpApi:
-          method: get
-          path: /todo

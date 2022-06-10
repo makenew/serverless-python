@@ -3,16 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predeploy": "serverless create_domain",
-    "deploy": "npm-run-all --serial deploy:domain deploy:stack",
-    "deploy:domain": "serverless create_domain --stage=$SERVERLESS_STAGE",
-    "deploy:stack": "serverless deploy --aws-s3-accelerate --stage=$SERVERLESS_STAGE",
+    "deploy": "serverless deploy --aws-s3-accelerate --stage=$SERVERLESS_STAGE",
     "sls:package": "serverless package"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.2",
     "serverless": "^3.17.0",
-    "serverless-domain-manager": "^6.0.2",
     "serverless-python-requirements": "^5.1.1"
   }
 }
