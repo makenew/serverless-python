@@ -25,6 +25,8 @@ provider:
     blockPublicAccess: true
 
 custom:
+  true: true
+  false: false
   pythonRequirements:
     slim: true
     usePoetry: true
