@@ -48,7 +48,12 @@ jobs:
         run: make test
       - name: Build
         run: make build
-      - name: Cut version
+      - name: Cut ${{ github.event.inputs.version }}${{ github.event.client_payload.version }} version
         run: |
-          poetry run bump2version --sign-tags ${{ github.event.inputs.version }}${{ github.event.client_payload.version }}
+          version="${{ github.event.inputs.version }}${{ github.event.client_payload.version }}"
+          if [[ "${version}" =~ [0-9] ]]; then
+            poetry run bump2version --sign-tags --new-version $version major
+          else
+            poetry run bump2version --sign-tags $version
+          fi
           git push && git push --tags
