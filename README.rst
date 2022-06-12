@@ -134,15 +134,15 @@ Installation
 ------------
 
 This package is registered on the `Python Package Index (PyPI)`_
-as makenew_serverless_python_.
+as makenew-serverless-python_.
 
 Install it with
 
 ::
 
-    $ poetry add makenew_serverless_python
+    $ poetry add makenew-serverless-python
 
-.. _makenew_serverless_python: https://pypi.python.org/pypi/makenew-serverless-python
+.. _makenew-serverless-python: https://pypi.python.org/pypi/makenew-serverless-python
 .. _Python Package Index (PyPI): https://pypi.python.org/
 
 Development and Testing
