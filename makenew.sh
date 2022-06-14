@@ -63,9 +63,18 @@ makenew () {
   sed_delete README.rst '18,131d'
   sed_insert README.rst '18i' 'TODO'
 
+  old_title="Serverless Python Project Skeleton"
+  old_title_length=${#old_title}
+  new_title_length=${#mk_title}
+  old_title_underline=""
+  new_title_underline=""
+  for ((i=1;i<=old_title_length;i++)); do old_title_underline="${old_title_underline}="; done
+  for ((i=1;i<=new_title_length;i++)); do new_title_underline="${new_title_underline}="; done
+
   find_replace "s/^version = \".*/version = \"0.0.0\"/g"
   find_replace "s/current_version = .*/current_version = 0.0.0/g"
-  find_replace "s/Serverless Python Project Skeleton/${mk_title}/g"
+  find_replace "s/${old_title}/${mk_title}/g"
+  find_replace "s/${old_title_underline}/${new_title_underline}/g"
   find_replace "s/Package skeleton for a Python Serverless project on AWS Lambda\./${mk_description}/g"
   find_replace "s/2022 Evan Sosenko/2022 ${mk_author}/g"
   find_replace "s/Evan Sosenko/${mk_author}/g"
