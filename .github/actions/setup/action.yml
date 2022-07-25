@@ -10,7 +10,7 @@ inputs:
   poetry_version:
     description: The Poetry version.
     required: false
-    default: '1.1.13'
+    default: '1.1.14'
 
 runs:
   using: composite
