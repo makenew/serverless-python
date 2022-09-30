@@ -1,4 +1,4 @@
-all: lint test build
+all: build
 
 build:
 	@rm -rf dist
