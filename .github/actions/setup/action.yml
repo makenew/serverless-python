@@ -10,7 +10,7 @@ inputs:
   poetry_version:
     description: The Poetry version.
     required: false
-    default: '1.1.14'
+    default: '1.2.1'
 
 runs:
   using: composite
@@ -31,4 +31,4 @@ runs:
         restore-keys: ${{ runner.os }}-poetry-
     - name: Install dependencies
       shell: bash
-      run: poetry install
+      run: poetry install --sync

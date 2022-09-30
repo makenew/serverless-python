@@ -4,7 +4,7 @@
     "dockerfile": "Dockerfile",
     "args": {
       "NODE_VERSION": "16",
-      "POETRY_VERSION": "1.1.14",
+      "POETRY_VERSION": "1.2.1",
       "VARIANT": "3.9"
     }
   },
