@@ -44,12 +44,6 @@ jobs:
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
       - name: Setup
         uses: ./.github/actions/setup
-      - name: Lint
-        run: make lint
-      - name: Test
-        run: make test
-      - name: Build
-        run: make build
       - name: Cut ${{ github.event.inputs.version }}${{ github.event.client_payload.version }} version
         run: |
           version="${{ github.event.inputs.version }}${{ github.event.client_payload.version }}"
