@@ -91,9 +91,8 @@ Bootstrapping a New Project
 
      $ npm install
      $ poetry install
-     $ poetry run bump2version patch
-     $ git push
-     $ git push --tags
+     $ poetry version patch
+     $ make version
 
 Updating
 ~~~~~~~~
@@ -221,15 +220,15 @@ Run tests on changes with
 Publishing
 ~~~~~~~~~~
 
-Use the bump2version_ command to release a new version.
-Push the created git tag which will trigger a GitHub action.
-
-.. _bump2version: https://github.com/c4urself/bump2version
+Use the `poetry version`_ command to release a new version.
+Then run `make version` to commit and push a new git tag
+which will trigger a GitHub action.
 
 Publishing may be triggered using on the web
 using a `workflow_dispatch on GitHub Actions`_.
 
-.. _workflow_dispatch on GitHub Actions: https://github.com/makenew/serverless-python/actions?query=workflow%3Aversion
+.. _Poetry version: https://python-poetry.org/docs/cli/#version
+.. _workflow_dispatch on GitHub Actions: https://github.com/makenew/pypackage/actions?query=workflow%3Aversion
 
 Deployment
 ~~~~~~~~~~

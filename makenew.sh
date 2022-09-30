@@ -60,7 +60,7 @@ makenew () {
   read -p '> GitHub repository name (my-repo): ' mk_repo
   read -p '> Serverless stack name (my-stack): ' mk_stack
 
-  sed_delete README.rst '18,131d'
+  sed_delete README.rst '18,130d'
   sed_insert README.rst '18i' 'TODO'
 
   old_title="Serverless Python Project Skeleton"

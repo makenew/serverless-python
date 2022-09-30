@@ -17,4 +17,9 @@ test:
 watch:
 	@poetry run ptw
 
-.PHONY: build format lint test watch
+version:
+	@git add pyproject.toml
+	@git commit -m "$$(poetry version -s)"
+	@git tag --sign "v$$(poetry version -s)" -m "$(poetry version -s)"
+
+.PHONY: build format lint test watch version
