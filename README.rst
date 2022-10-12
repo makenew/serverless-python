@@ -62,7 +62,7 @@ Bootstrapping a New Project
 
    ::
 
-       $ git reset --hard v1.2.0
+       $ git reset --hard <version-tag>
 
 3. Run
 
