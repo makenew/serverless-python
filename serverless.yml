@@ -30,6 +30,7 @@ custom:
   pythonRequirements:
     slim: true
     usePoetry: true
+    requirePoetryLockFile: true
     useDownloadCache: true
     useStaticCache: true
     dockerizePip: ${self:custom.${env:DOCKERIZE_PIP, 'true'}}
