@@ -30,11 +30,10 @@ custom:
   pythonRequirements:
     slim: true
     usePoetry: true
+    requirePoetryLockFile: true
     useDownloadCache: true
     useStaticCache: true
     dockerizePip: ${self:custom.${env:DOCKERIZE_PIP, 'true'}}
-    dockerImage: ghcr.io/mlupine/docker-lambda:${self:provider.runtime}-build-${self:provider.architecture}
-    dockerRunCmdExtraArgs: ['--platform', 'linux/${self:provider.architecture}']
     cacheLocation: .serverless-python-requirements
     staticCacheMaxVersions: 1
 

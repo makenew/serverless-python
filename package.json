@@ -8,6 +8,6 @@
   },
   "devDependencies": {
     "serverless": "^3.17.0",
-    "serverless-python-requirements": "^5.1.1"
+    "serverless-python-requirements": "^6.0.0"
   }
 }
