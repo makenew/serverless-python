@@ -224,8 +224,7 @@ Use the `poetry version`_ command to release a new version.
 Then run `make version` to commit and push a new git tag
 which will trigger a GitHub action.
 
-Publishing may be triggered using on the web
-using a `version workflow_dispatch on GitHub Actions`_.
+Publishing may be triggered using a `version workflow_dispatch on GitHub Actions`_.
 
 .. _Poetry version: https://python-poetry.org/docs/cli/#version
 .. _version workflow_dispatch on GitHub Actions: https://github.com/makenew/pypackage/actions?query=workflow%3Aversion
@@ -235,8 +234,7 @@ Deployment
 
 Serverless deployment is triggered by a release repository_dispatch on GitHub Actions.
 
-Deployment may be triggered using on the web
-using a `release workflow_dispatch on GitHub Actions`_.
+Deployment may be triggered using a `release workflow_dispatch on GitHub Actions`_.
 
 .. _release workflow_dispatch on GitHub Actions: https://github.com/makenew/serverless-python/actions?query=workflow%3Arelease
 
